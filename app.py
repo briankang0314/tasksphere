@@ -36,6 +36,15 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+class Project(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), unique=True, nullable=False)
+    tasks = db.relationship('Task', backref='project', lazy=True)
+
+class Department(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), unique=True, nullable=False)
+    tasks = db.relationship('Task', backref='department', lazy=True)
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -44,9 +53,9 @@ class Task(db.Model):
     priority = db.Column(db.String(50), nullable=False)
     deadline = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    # Additional fields and relationships can be added here
     user = db.relationship('User', backref=db.backref('tasks', lazy=True))
-
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), nullable=False)
+    department_id = db.Column(db.Integer, db.ForeignKey('department.id'), nullable=False)
 
 # User loader callback
 @login_manager.user_loader
@@ -69,7 +78,7 @@ def home():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    tasks = current_user.tasks
+    tasks = Task.query.filter_by(user_id=current_user.id).order_by(Task.priority, Task.deadline).all()
     return render_template('dashboard.html', tasks=tasks)
 
 
