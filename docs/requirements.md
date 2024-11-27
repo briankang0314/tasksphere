@@ -129,3 +129,23 @@ The proposed solution will enhance efficiency by reducing administrative overhea
   - Keeps track of changes in your codebase.
   - Facilitates collaboration if you're working with others.
   - Provides a cloud backup of your project.
+
+
+
+# Current File Structure
+
+
+project_root/
+├── app.py
+├── requirements.txt
+├── .gitignore
+├── README.md
+├── templates/
+├── static/
+├── instance/
+├── models/
+├── forms/
+├── utils/
+├── docs/
+│   ├── requirements.md
+│   ├── project_description.md
