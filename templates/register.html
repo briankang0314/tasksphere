@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}Register for TaskSphere{% endblock %}
+{% block content %}
+    <div class="register-card">
+        <h1 class="brand-title">TaskSphere</h1>
+        <h2 class="brand-subtitle">Create Your Account</h2>
+        <form action="{{ url_for('register') }}" method="post" id="registerForm">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Username" class="form-control" id="username" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" class="form-control" id="password" required autocomplete="new-password">
+            </div>
+            <div class="form-group">
+                <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control" id="confirm_password" required autocomplete="new-password">
+            </div>
+            <button type="submit" class="btn btn-primary-custom">Register</button>
+        </form>
+        <div class="login-link">
+            <span>Already have an account? </span>
+            <a href="{{ url_for('login') }}">Login here</a>
+        </div>
+    </div>
+
+    <style>
+        .register-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+        .brand-title {
+            color: #4169e1;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .brand-subtitle {
+            color: #6c757d;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .form-control {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .btn-primary-custom {
+            background-color: #4169e1;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        .btn-primary-custom:hover {
+            background-color: #365fcf;
+        }
+        .login-link {
+            margin-top: 1rem;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        .login-link a {
+            color: #4169e1;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <script>
+        // JavaScript for client-side validation
+        document.getElementById('registerForm').addEventListener('submit', function(event){
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm_password').value;
+            if(password !== confirmPassword){
+                alert('Passwords do not match.');
+                event.preventDefault();
+            }
+        });
+    </script>
+{% endblock %} 

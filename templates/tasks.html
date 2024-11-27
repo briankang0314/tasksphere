@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Your Tasks{% endblock %}
+{% block content %}
+    <div class="tasks-container">
+        <h1 class="tasks-title">Your Tasks</h1>
+        <a href="{{ url_for('add_task') }}" class="btn btn-primary-custom mb-3">Add New Task</a>
+        <div class="tasks-list">
+            {% for task in tasks %}
+            <div class="task-item">
+                <h3>{{ task.title }}</h3>
+                <p>{{ task.description }}</p>
+                <p>Due: {{ task.due_date.strftime('%Y-%m-%d') }} | Priority: {{ task.priority }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <style>
+        .tasks-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .tasks-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #15192a;
+            margin-bottom: 1rem;
+        }
+        .tasks-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .task-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .task-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+        }
+        .task-item h3 {
+            color: #15192a;
+            margin-bottom: 0.5rem;
+        }
+        .task-item p {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        .btn-primary-custom {
+            background-color: #4169e1;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary-custom:hover {
+            background-color: #365fcf;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+{% endblock %} 

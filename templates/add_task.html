@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Add Task{% endblock %}
+{% block content %}
+    <div class="add-task-container">
+        <h1 class="add-task-title">Add New Task</h1>
+        <div class="add-task-card">
+            <form action="{{ url_for('add_task') }}" method="post" id="addTaskForm">
+                <div class="form-group">
+                    <input type="text" name="title" placeholder="Title" class="form-control" id="title" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="description" placeholder="Description" class="form-control" id="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="date" name="due_date" class="form-control" id="due_date" required>
+                </div>
+                <div class="form-group">
+                    <select name="priority" class="form-control" id="priority" required>
+                        <option value="">Select Priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="category" placeholder="Category" class="form-control" id="category">
+                </div>
+                <input type="submit" value="Add Task" class="btn btn-primary-custom">
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .add-task-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .add-task-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #15192a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .add-task-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-control {
+            width: 100%;
+        }
+        .btn-primary-custom {
+            background-color: #4169e1;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        .btn-primary-custom:hover {
+            background-color: #365fcf;
+        }
+        /* Increase the height of the Priority select box */
+        #priority {
+            height: 50px; /* Adjust the value as needed */
+            padding: 0.5rem 1rem; /* Optional: Adjust padding for better appearance */
+            font-size: 1rem; /* Optional: Adjust font size for better readability */
+        }
+    </style>
+{% endblock %}
+{% block scripts %}
+<script>
+    // JavaScript for client-side validation
+    document.getElementById('addTaskForm').addEventListener('submit', function(event){
+        var title = document.getElementById('title').value.trim();
+        var dueDate = document.getElementById('due_date').value;
+        if(!title || !dueDate){
+            alert('Please fill out the required fields.');
+            event.preventDefault();
+        }
+    });
+</script>
+{% endblock %} 

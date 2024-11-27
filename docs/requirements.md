@@ -140,7 +140,15 @@ project_root/
 ├── .gitignore
 ├── README.md
 ├── templates/
-│   └── login.html
+│   ├── home.html
+│   ├── login.html
+│   ├── register.html
+│   ├── dashboard.html
+│   ├── tasks.html
+│   ├── add_task.html
+│   ├── meetings.html
+│   ├── base.html
+│   └── add_meeting.html
 ├── static/
 ├── instance/
 ├── models/
@@ -154,4 +162,4 @@ project_root/
 ├── utils/
 ├── docs/
 │   ├── requirements.md
-│   ├── project_description.md
+│   └── project_description.md

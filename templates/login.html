@@ -1,14 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-    <h1>Login</h1>
-    <form action="{{ url_for('login') }}" method="post">
-        <p><input type="text" name="username" placeholder="Username" required></p>
-        <p><input type="password" name="password" placeholder="Password" required></p>
-        <p><input type="submit" value="Login"></p>
+<!-- login.html -->
+{% extends "base.html" %}
+{% block title %}Login to TaskSphere{% endblock %}
+{% block content %}
+<div class="login-card">
+    <h1 class="brand-title">TaskSphere</h1>
+    <h2 class="brand-subtitle">Your complete task management solution</h2>
+    <form action="{{ url_for('login') }}" method="post" id="loginForm">
+        <div class="form-group">
+            <input type="text" name="username" placeholder="Username" class="form-control" id="username" required>
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" placeholder="Password" class="form-control" id="password" required>
+        </div>
+        <button type="submit" class="btn btn-login">Login to TaskSphere</button>
     </form>
-</body>
-</html> 
+    <div class="create-account">
+        <span>New to TaskSphere? </span>
+        <a href="{{ url_for('register') }}">Create an account</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        var email = document.getElementById('email').value.trim();
+        var password = document.getElementById('password').value.trim();
+        
+        if (!email || !password) {
+            alert('Please enter both email and password.');
+            event.preventDefault();
+        }
+    });
+</script>
+{% endblock %}

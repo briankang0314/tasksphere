@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Your Meetings{% endblock %}
+{% block content %}
+    <h1 class="mt-4">Your Meetings</h1>
+    <a href="{{ url_for('add_meeting') }}" class="btn btn-primary mb-3">Schedule New Meeting</a>
+    <ul class="list-group">
+        {% for meeting in meetings %}
+        <li class="list-group-item">
+            <strong>{{ meeting.title }}</strong> on {{ meeting.date_time.strftime('%Y-%m-%d %H:%M') }}
+            <p>Location: {{ meeting.location }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %} 

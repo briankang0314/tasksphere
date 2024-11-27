@@ -1,5 +1,5 @@
-from . import db
 from datetime import datetime
+from . import db
 
 # Association table for many-to-many relationship between Task and Category
 task_categories = db.Table('task_categories',
@@ -11,11 +11,12 @@ class Task(db.Model):
     __tablename__ = 'tasks'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(200), nullable=False)
+    title = db.Column(db.String(150), nullable=False)
     description = db.Column(db.Text, nullable=True)
-    deadline = db.Column(db.DateTime, nullable=False)
-    priority = db.Column(db.String(50), nullable=False)
-    completed = db.Column(db.Boolean, default=False)
+    due_date = db.Column(db.DateTime, nullable=True)
+    priority = db.Column(db.String(50), nullable=True)
+    category = db.Column(db.String(100), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     # Foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)

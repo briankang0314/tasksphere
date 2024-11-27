@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Schedule Meeting{% endblock %}
+{% block content %}
+    <h1 class="mt-4">Schedule New Meeting</h1>
+    <form action="{{ url_for('add_meeting') }}" method="post" id="addMeetingForm">
+        <div class="form-group">
+            <input type="text" name="title" placeholder="Title" class="form-control" id="title" required>
+        </div>
+        <div class="form-group">
+            <input type="datetime-local" name="date_time" class="form-control" id="date_time" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="location" placeholder="Location" class="form-control" id="location">
+        </div>
+        <input type="submit" value="Schedule Meeting" class="btn btn-primary">
+    </form>
+{% endblock %}
+{% block scripts %}
+<script>
+    // Client-side validation for add meeting form
+    document.getElementById('addMeetingForm').addEventListener('submit', function(event){
+        var title = document.getElementById('title').value.trim();
+        var dateTime = document.getElementById('date_time').value;
+        if(!title || !dateTime){
+            alert('Please fill out the required fields.');
+            event.preventDefault();
+        }
+    });
+</script>
+{% endblock %} 

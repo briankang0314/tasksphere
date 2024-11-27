@@ -1,0 +1,218 @@
+<!-- home.html -->
+{% extends "base.html" %}
+{% block title %}Welcome to TaskSphere{% endblock %}
+{% block content %}
+<div class="home-container">
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to TaskSphere</h1>
+            <p class="hero-subtitle">Streamline your workflow, boost productivity, and manage tasks with ease</p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('login') }}" class="btn btn-primary-custom">Log In</a>
+                <a href="{{ url_for('register') }}" class="btn btn-secondary-custom">Create Account</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="blob-shape">
+                <path fill="#4169e1" d="M45.7,-50.2C59.9,-34.7,72.3,-17.3,73.7,1.4C75,20.1,65.2,40.3,51,51.5C36.8,62.7,18.4,65,-1.9,67.1C-22.2,69.2,-44.4,71,-57.8,59.6C-71.2,48.2,-75.8,23.6,-73.7,1.2C-71.5,-21.2,-62.5,-42.4,-47.8,-57.8C-33.1,-73.2,-12.7,-82.8,2.4,-85.3C17.5,-87.8,34.9,-83.2,45.7,-50.2Z" transform="translate(100 100)" />
+            </svg>
+            <div class="feature-icons">
+                <div class="icon-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                    </svg>
+                    <span>Track Tasks</span>
+                </div>
+                <div class="icon-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Time Management</span>
+                </div>
+                <div class="icon-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    <span>Team Collaboration</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="features-section">
+        <div class="feature-card">
+            <h3>Organize Tasks</h3>
+            <p>Create, organize, and prioritize tasks with our intuitive interface.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Track Progress</h3>
+            <p>Monitor project progress and meet deadlines with real-time updates.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Collaborate</h3>
+            <p>Work seamlessly with your team members and share updates instantly.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .home-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .hero-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 60vh;
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .hero-content {
+        flex: 1;
+        max-width: 600px;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: #15192a;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: #6c757d;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .btn-primary-custom {
+        background-color: #4169e1;
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-secondary-custom {
+        background-color: #15192a;
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover,
+    .btn-secondary-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        color: white;
+        text-decoration: none;
+    }
+
+    .hero-image {
+        flex: 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .blob-shape {
+        width: 100%;
+        max-width: 500px;
+        opacity: 0.1;
+    }
+
+    .feature-icons {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .icon-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: white;
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .feature-icon {
+        width: 24px;
+        height: 24px;
+        color: #4169e1;
+    }
+
+    .features-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+    }
+
+    .feature-card h3 {
+        color: #15192a;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .feature-card p {
+        color: #6c757d;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .cta-buttons {
+            justify-content: center;
+        }
+
+        .feature-icons {
+            position: static;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+    }
+</style>
+{% endblock %}
