@@ -134,16 +134,22 @@ The proposed solution will enhance efficiency by reducing administrative overhea
 
 # Current File Structure
 
-
 project_root/
 ├── app.py
 ├── requirements.txt
 ├── .gitignore
 ├── README.md
 ├── templates/
+│   └── login.html
 ├── static/
 ├── instance/
 ├── models/
+│   ├── __init__.py
+│   ├── user.py
+│   ├── task.py
+│   ├── meeting.py
+│   ├── category.py
+│   └── department.py
 ├── forms/
 ├── utils/
 ├── docs/
