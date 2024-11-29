@@ -67,9 +67,13 @@ def logout():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    # Get user's tasks and meetings
-    user_tasks = Task.query.filter_by(user_id=current_user.id).order_by(Task.due_date).limit(5).all()
-    return render_template('dashboard.html', tasks=user_tasks)
+    # Fetch tasks for the current user
+    user_tasks = Task.query.filter_by(user_id=current_user.id).order_by(Task.due_date).all()
+    
+    # Fetch meetings for the current user
+    user_meetings = Meeting.query.filter_by(user_id=current_user.id).order_by(Meeting.date_time).all()
+    
+    return render_template('dashboard.html', tasks=user_tasks, meetings=user_meetings)
 
 def get_db():
     if 'db' not in g:

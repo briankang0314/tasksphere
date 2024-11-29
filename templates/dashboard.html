@@ -3,6 +3,8 @@
 {% block content %}
     <div class="dashboard-container">
         <h1 class="dashboard-title">Welcome, {{ current_user.username }}</h1>
+        
+        <!-- Tasks Section -->
         <h2 class="dashboard-subtitle">Your Upcoming Tasks</h2>
         <div class="tasks-list">
             {% for task in tasks %}
@@ -12,8 +14,24 @@
             </div>
             {% endfor %}
         </div>
+
+        <!-- Meetings Section -->
+        <h2 class="dashboard-subtitle mt-5">Your Upcoming Meetings</h2>
+        <div class="meetings-list">
+            {% for meeting in meetings %}
+            <div class="meeting-item">
+                <h3>{{ meeting.title }}</h3>
+                <p><strong>Date & Time:</strong> {{ meeting.date_time.strftime('%Y-%m-%d %H:%M') }}</p>
+                <p><strong>Location:</strong> {{ meeting.location }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Action Buttons -->
         <a href="{{ url_for('add_task') }}" class="btn btn-primary-custom mt-3">Add New Task</a>
         <a href="{{ url_for('tasks') }}" class="btn btn-primary-custom mt-3">View All Tasks</a>
+        <a href="{{ url_for('add_meeting') }}" class="btn btn-primary-custom mt-3">Add New Meeting</a>
+        <a href="{{ url_for('meetings') }}" class="btn btn-primary-custom mt-3">View All Meetings</a>
     </div>
 
     <style>
@@ -56,6 +74,33 @@
         .task-item p {
             color: #6c757d;
             line-height: 1.6;
+        }
+
+        /* Meetings Section Styles */
+        .meetings-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .meeting-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .meeting-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+        }
+        .meeting-item h3 {
+            color: #15192a;
+            margin-bottom: 0.5rem;
+        }
+        .meeting-item p {
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
         }
     </style>
 {% endblock %} 

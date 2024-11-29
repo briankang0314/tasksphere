@@ -1,19 +1,61 @@
 {% extends "base.html" %}
 {% block title %}Schedule Meeting{% endblock %}
 {% block content %}
-    <h1 class="mt-4">Schedule New Meeting</h1>
-    <form action="{{ url_for('add_meeting') }}" method="post" id="addMeetingForm">
-        <div class="form-group">
-            <input type="text" name="title" placeholder="Title" class="form-control" id="title" required>
+    <div class="add-meeting-container">
+        <h1 class="add-meeting-title">Schedule New Meeting</h1>
+        <div class="add-meeting-card">
+            <form action="{{ url_for('add_meeting') }}" method="post" id="addMeetingForm">
+                <div class="form-group">
+                    <input type="text" name="title" placeholder="Title" class="form-control" id="title" required>
+                </div>
+                <div class="form-group">
+                    <input type="datetime-local" name="date_time" class="form-control" id="date_time" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="location" placeholder="Location" class="form-control" id="location">
+                </div>
+                <input type="submit" value="Schedule Meeting" class="btn btn-primary-custom">
+            </form>
         </div>
-        <div class="form-group">
-            <input type="datetime-local" name="date_time" class="form-control" id="date_time" required>
-        </div>
-        <div class="form-group">
-            <input type="text" name="location" placeholder="Location" class="form-control" id="location">
-        </div>
-        <input type="submit" value="Schedule Meeting" class="btn btn-primary">
-    </form>
+    </div>
+
+    <style>
+        /* Existing styles can be omitted for brevity */
+
+        /* Specific styles for the Add Meeting page */
+        .add-meeting-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .add-meeting-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #15192a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .add-meeting-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-primary-custom {
+            background-color: #4169e1;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        .btn-primary-custom:hover {
+            background-color: #365fcf;
+        }
+    </style>
 {% endblock %}
 {% block scripts %}
 <script>

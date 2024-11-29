@@ -1,14 +1,58 @@
 {% extends "base.html" %}
 {% block title %}Your Meetings{% endblock %}
 {% block content %}
-    <h1 class="mt-4">Your Meetings</h1>
-    <a href="{{ url_for('add_meeting') }}" class="btn btn-primary mb-3">Schedule New Meeting</a>
-    <ul class="list-group">
-        {% for meeting in meetings %}
-        <li class="list-group-item">
-            <strong>{{ meeting.title }}</strong> on {{ meeting.date_time.strftime('%Y-%m-%d %H:%M') }}
-            <p>Location: {{ meeting.location }}</p>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="meetings-container">
+        <h1 class="meetings-title">Your Meetings</h1>
+        <a href="{{ url_for('add_meeting') }}" class="btn btn-primary-custom mb-3">Schedule New Meeting</a>
+        <div class="meetings-list">
+            {% for meeting in meetings %}
+            <div class="meeting-card">
+                <h3>{{ meeting.title }}</h3>
+                <p><strong>Date & Time:</strong> {{ meeting.date_time.strftime('%Y-%m-%d %H:%M') }}</p>
+                <p><strong>Location:</strong> {{ meeting.location }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <style>
+        /* Specific styles for the Meetings page */
+        .meetings-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .meetings-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #15192a;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .meetings-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .meeting-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .meeting-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+        }
+        .meeting-card h3 {
+            color: #15192a;
+            margin-bottom: 0.5rem;
+        }
+        .meeting-card p {
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+    </style>
 {% endblock %} 

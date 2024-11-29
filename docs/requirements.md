@@ -150,6 +150,12 @@ project_root/
 │   ├── base.html
 │   └── add_meeting.html
 ├── static/
+│   ├── icons/
+│   │   ├── tasksphere_icon_128.png
+│   │   ├── tasksphere_icon_256.png
+│   │   └── tasksphere_icon_512.png
+│   ├── service-worker.js
+│   └── manifest.json
 ├── instance/
 ├── models/
 │   ├── __init__.py

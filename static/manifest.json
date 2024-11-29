@@ -1,0 +1,25 @@
+{
+    "short_name": "TaskSphere",
+    "name": "TaskSphere Task Management",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f8f9fa",
+    "theme_color": "#4169e1",
+    "icons": [
+      {
+        "src": "/static/icons/tasksphere_icon_128.png",
+        "type": "image/png",
+        "sizes": "128x128"
+      },
+      {
+        "src": "/static/icons/tasksphere_icon_256.png",
+        "type": "image/png",
+        "sizes": "256x256"
+      },
+      {
+        "src": "/static/icons/tasksphere_icon_512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ]
+  }
